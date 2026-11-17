@@ -1,0 +1,25 @@
+# LaTeX auxiliares
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.loa
+*.lof
+*.log
+*.loq
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+
+# PDF gerado
+main.pdf
+
+# macOS
+.DS_Store
