@@ -6,8 +6,9 @@
 % Modelo adaptado de:
 % Frits Wenneker (http://www.howtotex.com)
 %
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Licença:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+% O original de Frits Wenneker é CC BY-NC-SA 3.0. Veja o arquivo LICENSE.
 %
 % Compilação: pdflatex -> bibtex -> pdflatex -> pdflatex (ou latexmk -pdf main.tex)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,6 +47,18 @@
 \renewcommand*{\cftquadroaftersnum}{\hfill\textendash\hfill}
 
 % ---------------------------------
+% Códigos-fonte (ilustração, NBR 14724)
+% ---------------------------------
+\newcommand{\codigoname}{Código}
+\newcommand{\listofcodigosname}{Lista de códigos}
+\newfloat[chapter]{codigo}{loc}{\codigoname}
+\newlistof{listofcodigos}{loc}{\listofcodigosname}
+\newlistentry{codigo}{loc}{0}
+\counterwithout{codigo}{chapter}
+\renewcommand{\cftcodigoname}{\codigoname\space}
+\renewcommand*{\cftcodigoaftersnum}{\hfill\textendash\hfill}
+
+% ---------------------------------
 % PACOTES
 % ---------------------------------
 \usepackage{lmodern}			% Usa a fonte Latin Modern
@@ -64,7 +77,48 @@
 \usepackage{subcaption}         % Subfiguras
 \usepackage{booktabs}           % Linhas de tabelas
 \usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
+% Palavras-chave dos algoritmos em português (definidas explicitamente porque
+% as opções globais de idioma da classe interferem na escolha do pacote)
+\SetKwInput{KwIn}{Entrada}
+\SetKwInput{KwOut}{Saída}
+\SetKwInput{KwData}{Dados}
+\SetKwInput{KwResult}{Resultado}
+\SetKw{KwTo}{até}
+\SetKw{Return}{retorne}
+\SetKwFor{For}{para}{faça}{fim para}
+\SetKwFor{ForEach}{para cada}{faça}{fim para cada}
+\SetKwFor{While}{enquanto}{faça}{fim enquanto}
+\SetKwRepeat{Repeat}{repita}{até}
+\SetKwIF{If}{ElseIf}{Else}{se}{então}{senão se}{senão}{fim se}
 \usepackage{csquotes}           % Aspas corretas (\enquote)
+\usepackage{tabularx}           % Tabelas e quadros com largura fixa
+\usepackage{array}
+\usepackage{listings}           % Códigos-fonte (ambiente lstlisting)
+\usepackage{tikz}               % Diagramas (fluxogramas, UML, processos, gráficos)
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, shapes.multipart, fit, calc}
+
+% ---------------------------------
+% Configuração dos códigos-fonte
+% ---------------------------------
+\lstset{
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\bfseries,
+	commentstyle=\itshape\color{black!60},
+	stringstyle=\color{black!75},
+	numbers=left, numberstyle=\tiny, numbersep=6pt,
+	frame=single, breaklines=true, showstringspaces=false,
+	tabsize=4, xleftmargin=1.5em, framexleftmargin=1.5em,
+	columns=fullflexible, keepspaces=true,
+	% O listings não aceita caracteres UTF-8: a tabela abaixo permite
+	% acentos em comentários e textos dos códigos.
+	literate=
+		{á}{{\'a}}1 {à}{{\`a}}1 {â}{{\^a}}1 {ã}{{\~a}}1
+		{é}{{\'e}}1 {ê}{{\^e}}1 {í}{{\'i}}1 {ó}{{\'o}}1
+		{ô}{{\^o}}1 {õ}{{\~o}}1 {ú}{{\'u}}1 {ü}{{\"u}}1 {ç}{{\c{c}}}1
+		{Á}{{\'A}}1 {À}{{\`A}}1 {Â}{{\^A}}1 {Ã}{{\~A}}1
+		{É}{{\'E}}1 {Ê}{{\^E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1
+		{Ô}{{\^O}}1 {Õ}{{\~O}}1 {Ú}{{\'U}}1 {Ç}{{\c{C}}}1
+}
 
 % ---------------------------------
 % Pacotes de citações
@@ -106,7 +160,15 @@
 %-----------------------------------
 % Aparência do PDF final
 %-----------------------------------
-\definecolor{blue}{RGB}{41,5,195}
+% Versão para impressão: mude para \impressaotrue para links em preto
+\newif\ifimpressao
+\impressaofalse
+\ifimpressao
+	\definecolor{blue}{RGB}{0,0,0}
+	\definecolor{magenta}{RGB}{0,0,0}
+\else
+	\definecolor{blue}{RGB}{41,5,195}
+\fi
 
 \makeatletter
 \hypersetup{
@@ -159,27 +221,27 @@
 	\sffamily
 	\vspace*{\fill}
 	\begin{center}
-	\fbox{\begin{minipage}[c][8cm]{13.5cm}
-		\small
-		\imprimirautor
-		\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-		\imprimirlocal, \imprimirdata-
+		\fbox{\begin{minipage}[c][8cm]{13.5cm}
+				\small
+				\imprimirautor
+				\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+				\imprimirlocal, \imprimirdata-
 
-		\hspace{0.5cm} \pageref{LastPage} p. : il.
+				\hspace{0.5cm} \pageref{LastPage} p. : il.
 
-		\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador
+				\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador
 
-		\hspace{0.5cm}
-		\parbox[t]{12.5cm}{\imprimirtipotrabalho~--~\imprimirinstituicao,
-		\imprimirdata.}
+				\hspace{0.5cm}
+				\parbox[t]{12.5cm}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+					\imprimirdata.}
 
-		\hspace{0.5cm}
-			1. Palavra-chave1.
-			2. Palavra-chave2.
-			I. \imprimirorientador.
-			II. \imprimirinstituicao.
-			III. Título
-	\end{minipage}}
+				\hspace{0.5cm}
+				1. Palavra-chave1.
+				2. Palavra-chave2.
+				I. \imprimirorientador.
+				II. \imprimirinstituicao.
+				III. Título
+			\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
 
@@ -234,7 +296,7 @@
 %-----------------------------------
 % Agradecimentos (opcional)
 \begin{agradecimentos}
-Agradecimentos...
+	Agradecimentos...
 \end{agradecimentos}
 
 %-----------------------------------
@@ -280,6 +342,12 @@ Agradecimentos...
 \cleardoublepage
 
 %-----------------------------------
+% Lista de códigos (remova se o trabalho não tiver códigos)
+\pdfbookmark[0]{\listofcodigosname}{loc}
+\listofcodigos*
+\cleardoublepage
+
+%-----------------------------------
 % Lista de tabelas
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
@@ -307,10 +375,10 @@ Agradecimentos...
 \textual
 
 \include{Capitulos/cap1_introducao}
-\include{Capitulos/cap2_revisao}
+\include{Capitulos/cap2_fundamentacao}
 \include{Capitulos/cap3_metodologia}
 \include{Capitulos/cap4_resultados}
-\include{Capitulos/cap5_conclusao}
+\include{Capitulos/cap5_consideracoes}
 
 %-----------------------------------
 % Finaliza a parte no bookmark do PDF

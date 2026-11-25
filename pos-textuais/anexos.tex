@@ -1,18 +1,20 @@
-% Elemento opcional: texto ou documento NÃO elaborado pelo autor
+% Anexos: textos ou documentos NÃO elaborados pelo autor
 %-----------------------------------
 \begin{anexosenv}
 \label{anexos}
 
 %-----------------------------------
-\chapter{Exemplo de anexo}
+\chapter{Parecer do Comitê de Ética em Pesquisa (exemplo)}
 \label{anexoA}
 
-Anexos reúnem documentos não elaborados pelo autor (por exemplo, normas, formulários ou manuais de terceiros) que servem de fundamentação, comprovação ou ilustração. Inclua-os, preferencialmente, como PDF:
+Anexos reúnem documentos não elaborados pelo autor que servem de fundamentação, comprovação ou ilustração, como o parecer consubstanciado do Comitê de Ética em Pesquisa (CEP), exigido em pesquisas com seres humanos que necessitam de apreciação ética (Seção~\ref{sec_met_etica}), ou documentos fornecidos por uma organização estudada.
 
-\begin{verbatim}
-\includepdf[pages=-]{Anexos/documento.pdf} % pacote pdfpages
-\end{verbatim}
+Inclua o documento original, preferencialmente em PDF, com o pacote \texttt{pdfpages}:
 
-Toda figura inserida em anexo deve indicar a fonte e respeitar os direitos autorais da obra original.
+\begin{Verbatim}[fontsize=\small,frame=single]
+\includepdf[pages=-]{Anexos/parecer_cep.pdf}
+\end{Verbatim}
+
+Documentos de terceiros devem ser incluídos com autorização e sem alterações, ocultando informações pessoais ou sigilosas quando necessário.
 
 \end{anexosenv}

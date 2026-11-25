@@ -1,0 +1,44 @@
+%-----------------------------------
+\chapter{Documento de requisitos (exemplo)}
+\label{apB_requisitos}
+
+Este apêndice exemplifica o documento de requisitos completo de um TCC de desenvolvimento de software (Seção~\ref{sec_tipo_desenvolvimento}) e o uso de tabela longa, que continua automaticamente nas páginas seguintes.
+
+{\small
+\begin{longtable}{@{}l p{9.5cm} l@{}}
+	\caption{Requisitos do sistema de agendamento (exemplo).} \label{tab_requisitos_completos} \\
+	\toprule
+	ID & Descrição & Prioridade \\
+	\midrule
+	\endfirsthead
+	\multicolumn{3}{c}{\tablename\ \thetable\ -- \textit{continuação}} \\
+	\toprule
+	ID & Descrição & Prioridade \\
+	\midrule
+	\endhead
+	\midrule
+	\multicolumn{3}{r}{\textit{Continua na próxima página}} \\
+	\endfoot
+	\bottomrule
+	\multicolumn{3}{l}{\fontename: Elaborado pelo autor.} \\
+	\endlastfoot
+	\multicolumn{3}{l}{\textit{Requisitos funcionais}} \\
+	RF01 & O sistema deve permitir o cadastro de clientes. & Alta \\
+	RF02 & O sistema deve permitir agendar, remarcar e cancelar atendimentos. & Alta \\
+	RF03 & O sistema deve enviar lembrete ao cliente um dia antes do atendimento. & Média \\
+	RF04 & O sistema deve emitir relatório mensal de atendimentos. & Baixa \\
+	RF05 & O sistema deve permitir o cadastro de serviços, com descrição e duração. & Alta \\
+	RF06 & O sistema deve exibir a agenda diária e semanal de cada profissional. & Alta \\
+	RF07 & O sistema deve impedir agendamentos em horários já ocupados. & Alta \\
+	RF08 & O sistema deve permitir que o cliente consulte seus agendamentos. & Média \\
+	RF09 & O sistema deve registrar o histórico de atendimentos de cada cliente. & Média \\
+	RF10 & O sistema deve permitir a exportação de relatórios em PDF. & Baixa \\
+	\midrule
+	\multicolumn{3}{l}{\textit{Requisitos não funcionais}} \\
+	RNF01 & O sistema deve funcionar nos navegadores Chrome, Firefox e Edge atuais. & Alta \\
+	RNF02 & O sistema deve responder às consultas em até 2 segundos. & Média \\
+	RNF03 & O sistema deve exigir autenticação com senha para acesso administrativo. & Alta \\
+	RNF04 & O sistema deve tratar dados pessoais conforme a LGPD. & Alta \\
+	RNF05 & A interface deve ser responsiva, adaptando-se a celulares. & Média \\
+\end{longtable}
+}

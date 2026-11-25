@@ -1,0 +1,73 @@
+%-----------------------------------
+\section{Estudo de caso}
+\label{sec_tipo_estudo_caso}
+
+\subsection{Caracterização}
+
+O estudo de caso investiga um fenômeno contemporâneo em profundidade e em seu contexto real, especialmente quando os limites entre o fenômeno e o contexto não são claros \cite{yin2015estudo}. Em Sistemas de Informação, é comum estudar a implantação de um sistema em uma organização, diagnosticar e propor melhorias para processos de negócio \cite{dumas2018fundamentals} ou analisar como uma equipe adota uma prática de desenvolvimento \cite{runeson2009guidelines}.
+
+O estudo de caso usa várias fontes de evidência, como entrevistas, documentos, observação e dados de sistemas, e as combina (triangulação) para fortalecer as conclusões. A autorização da organização estudada e o sigilo das informações sensíveis devem ser tratados na metodologia.
+
+\subsection{Estrutura típica do trabalho}
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Estrutura típica de um TCC de estudo de caso.}
+	\label{qua_estrutura_estudo_caso}
+	\small
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Capítulo} & \textbf{Seções típicas} \\ \hline
+		Metodologia & Caracterização do estudo (caso único ou múltiplo, unidade de análise); fontes e técnicas de coleta; análise dos dados. \\ \hline
+		O caso & Caracterização da organização; situação atual (AS-IS); proposta ou intervenção (TO-BE). \\ \hline
+		Resultados e discussão & Resultados da análise ou da intervenção; discussão; limitações. \\ \hline
+		Apêndices e anexos & Roteiro de entrevista (apêndice); documentos da organização (anexo). \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
+
+O Quadro~\ref{qua_estrutura_estudo_caso} resume a estrutura desse tipo de trabalho. Um modelo de roteiro de entrevista está no Apêndice~\ref{apD_roteiro}.
+
+\subsection{Exemplo: processo atual e processo proposto}
+
+Em estudos que envolvem processos de negócio, é comum comparar o processo atual (AS-IS) com o proposto (TO-BE), como na Figura~\ref{fig_processos}. Subfiguras permitem apresentar as duas versões lado a lado e referenciá-las individualmente: Figura~\ref{subfig_asis} e Figura~\ref{subfig_tobe}.
+
+\begin{figure}[htb]
+	\centering
+	\caption{Processo de solicitação de compras de uma organização (exemplo).}
+	\label{fig_processos}
+	\tikzset{
+		tarefa/.style={draw, rounded corners, align=center, font=\scriptsize, minimum width=2.4cm, minimum height=0.8cm},
+		evento/.style={draw, circle, minimum size=0.45cm},
+		fluxo/.style={-{Stealth}},
+	}
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\begin{tikzpicture}[node distance=0.45cm]
+			\node[evento] (i) {};
+			\node[tarefa, below=of i] (t1) {Preencher\\formulário em papel};
+			\node[tarefa, below=of t1] (t2) {Entregar ao setor\\de compras};
+			\node[tarefa, below=of t2] (t3) {Digitar pedido\\na planilha};
+			\node[tarefa, below=of t3] (t4) {Aprovar pedido};
+			\node[evento, very thick, below=of t4] (f) {};
+			\draw[fluxo] (i) -- (t1); \draw[fluxo] (t1) -- (t2); \draw[fluxo] (t2) -- (t3);
+			\draw[fluxo] (t3) -- (t4); \draw[fluxo] (t4) -- (f);
+		\end{tikzpicture}
+		\caption{Processo atual (AS-IS).}
+		\label{subfig_asis}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\begin{tikzpicture}[node distance=0.45cm]
+			\node[evento] (i) {};
+			\node[tarefa, below=of i] (t1) {Registrar pedido\\no sistema};
+			\node[tarefa, below=of t1] (t4) {Aprovar pedido\\no sistema};
+			\node[evento, very thick, below=of t4] (f) {};
+			\draw[fluxo] (i) -- (t1); \draw[fluxo] (t1) -- (t4); \draw[fluxo] (t4) -- (f);
+		\end{tikzpicture}
+		\caption{Processo proposto (TO-BE).}
+		\label{subfig_tobe}
+	\end{subfigure}
+	\fonte{Elaborado pelo autor.}
+\end{figure}

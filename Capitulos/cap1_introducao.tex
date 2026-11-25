@@ -1,18 +1,88 @@
 \chapter{Introdução}
 \label{cap1_introducao}
 
-O objetivo deste documento é apresentar um modelo básico para a elaboração de Trabalho de Conclusão de Curso (TCC) do Instituto Federal do Norte de Minas Gerais (IFNMG), utilizando \LaTeX{} e a classe \textbf{abnTeX2}, em conformidade com as normas da Associação Brasileira de Normas Técnicas (ABNT), em especial a \texttt{ABNT NBR 14724:2011} (trabalhos acadêmicos) e a \texttt{ABNT NBR 10520:2023} (citações).
+% ---------------------------------------------------------------
+% ORIENTAÇÃO: a introdução começa SEM seção, com a contextualização
+% do tema e a apresentação do problema de pesquisa. Em seguida vêm
+% as seções de objetivos, justificativa e organização do trabalho.
+% Substitua todo o texto deste modelo pelo conteúdo do seu TCC.
+% ---------------------------------------------------------------
 
-A introdução visa oferecer uma visão clara do que será tratado no trabalho e normalmente contempla os seguintes elementos:
+O Trabalho de Conclusão de Curso (TCC) é a etapa em que o estudante do Bacharelado em Sistemas de Informação (BSI) do Instituto Federal do Norte de Minas Gerais (IFNMG) aplica, de forma sistemática, os conhecimentos construídos ao longo do curso para investigar um problema ou construir uma solução. Os trabalhos da área assumem formas variadas: desenvolvimento de software, experimentos, levantamentos com usuários, estudos de caso em organizações e revisões da literatura, entre outras.
 
+Essa diversidade traz uma dificuldade prática: cada tipo de trabalho exige uma estrutura de capítulos, um conjunto de procedimentos e uma forma de apresentar resultados diferentes, e é comum que o estudante não saiba de antemão quais elementos o seu trabalho precisa conter. Diante disso, este documento busca responder à seguinte questão: \textit{como estruturar a monografia de TCC de acordo com o tipo de trabalho desenvolvido e com as normas da Associação Brasileira de Normas Técnicas (ABNT)?}
+
+% Dica: o problema de pesquisa costuma ser apresentado como pergunta,
+% no último parágrafo antes da seção de objetivos.
+
+\section{Objetivos}
+\label{sec_objetivos}
+
+\subsection{Objetivo geral}
+
+Oferecer um modelo de monografia em \LaTeX{} que oriente a estruturação dos diferentes tipos de TCC do curso de BSI, em conformidade com as normas da ABNT.
+
+\subsection{Objetivos específicos}
+
+% Use verbos no infinitivo. Cada objetivo específico deve ser
+% retomado nas considerações finais (Capítulo 5).
 \begin{alineas}
-	\item \textbf{Contextualização do tema}: apresente o cenário atual do tema abordado, explicando sua relevância e o contexto no qual ele está inserido;
-	\item \textbf{Problema de pesquisa}: defina de forma clara qual é o problema que o trabalho pretende abordar ou resolver, seja uma questão ou uma necessidade identificada na área de estudo;
-	\item \textbf{Objetivo geral}: descreva o que o trabalho pretende alcançar de forma ampla;
-	\item \textbf{Objetivos específicos}: detalhe as etapas ou os aspectos que devem ser abordados para atingir o objetivo geral;
-	\item \textbf{Justificativa}: explique a relevância do trabalho, as possíveis contribuições para a academia, o mercado ou a sociedade e sua relação com outros estudos;
-	\item \textbf{Metodologia (breve)}: mencione resumidamente os métodos e as abordagens utilizados (por exemplo, estudo de caso, pesquisa bibliográfica, desenvolvimento de um sistema);
-	\item \textbf{Estrutura do trabalho}: resuma o conteúdo dos capítulos subsequentes.
+	\item caracterizar os principais tipos de trabalho apresentados no curso;
+	\item descrever a estrutura típica de cada tipo de trabalho;
+	\item exemplificar os elementos característicos de cada tipo, como figuras, quadros, tabelas e equações;
+	\item disponibilizar modelos de apêndices e anexos frequentes, como documento de requisitos, questionário e Termo de Consentimento Livre e Esclarecido (TCLE).
 \end{alineas}
 
-O restante do documento está organizado da seguinte forma: o Capítulo~\ref{cap2_revisao} apresenta os elementos principais, como referências, figuras, quadros, tabelas, equações e algoritmos; o Capítulo~\ref{cap3_metodologia} descreve a metodologia; o Capítulo~\ref{cap4_resultados} apresenta os resultados; e o Capítulo~\ref{cap5_conclusao} traz as considerações finais. Por último, veja um exemplo de apêndice (Apêndice~\ref{apendiceA}) e de anexo (Anexo~\ref{anexoA}).
+\section{Justificativa}
+
+% Explique por que o trabalho é relevante: contribuições para a
+% academia, para o mercado ou para a sociedade.
+Um modelo único, que reúna a formatação exigida pela ABNT e orientações de conteúdo para cada tipo de trabalho, reduz o tempo gasto com questões de forma, padroniza as monografias do curso e permite que estudantes e orientadores concentrem esforços no mérito da pesquisa.
+
+% ---------------------------------------------------------------
+% As Seções 1.3 e 1.4 existem apenas neste modelo, para orientar o
+% estudante. Apague-as no seu TCC.
+% ---------------------------------------------------------------
+\section{Como usar este modelo}
+\label{sec_como_usar}
+
+Este documento cumpre dois papéis ao mesmo tempo: é um exemplo de monografia completa, formatada segundo a ABNT, e é um guia sobre o que escrever em cada parte. Ao percorrê-lo, você encontrará:
+
+\begin{alineas}
+	\item \textbf{elementos pré-textuais prontos}: capa, folha de rosto, ficha catalográfica, folha de aprovação, resumo, \textit{abstract}, listas e sumário, preenchidos automaticamente a partir dos dados informados no arquivo \texttt{main.tex};
+	\item \textbf{capítulos com orientações}: cada capítulo explica o que deve conter e traz comentários no código-fonte, iniciados por \texttt{\%} e marcados como \texttt{ORIENTAÇÃO}, que não aparecem no PDF;
+	\item \textbf{um guia dos tipos de trabalho}: o Capítulo~\ref{cap2_fundamentacao} descreve cada tipo de TCC com sua caracterização, a estrutura típica de capítulos e um exemplo dos elementos que costumam aparecer no texto;
+	\item \textbf{exemplos de todos os recursos de formatação}: figuras, subfiguras, quadros, tabelas, equações, algoritmos e citações, distribuídos nos exemplos de cada tipo e resumidos no Apêndice~\ref{apA_guia};
+	\item \textbf{modelos de apêndices e anexos}: documento de requisitos, questionário, TCLE, roteiro de entrevista e parecer do Comitê de Ética em Pesquisa (CEP).
+\end{alineas}
+
+Os dados apresentados nos exemplos são fictícios e servem apenas para ilustrar a formatação. Para começar o seu TCC, identifique o seu tipo de trabalho (Seção~\ref{sec_escolha_tipo}), leia a seção correspondente no Capítulo~\ref{cap2_fundamentacao} e substitua o conteúdo deste modelo pelo seu, apagando as seções e os apêndices que não se aplicam.
+
+\section{Como escolher o tipo de trabalho}
+\label{sec_escolha_tipo}
+
+O tipo de trabalho é definido pela forma como o problema de pesquisa será respondido. O Quadro~\ref{qua_escolha_tipo} sintetiza os tipos mais comuns no curso a partir de uma pergunta-chave: se a resposta para o seu trabalho for \enquote{sim}, aquele tipo é um bom ponto de partida.
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Síntese dos tipos de trabalho para apoiar a escolha.}
+	\label{qua_escolha_tipo}
+	\small
+	\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3cm}|X|>{\raggedright\arraybackslash}p{3.1cm}|c|}
+		\hline
+		\textbf{Tipo} & \textbf{Pergunta-chave} & \textbf{Resultado principal} & \textbf{Seção} \\ \hline
+		Desenvolvimento de software & Vou construir um sistema para resolver um problema e avaliar se ele funciona? & Sistema desenvolvido e sua avaliação & \ref{sec_tipo_desenvolvimento} \\ \hline
+		Pesquisa experimental & Vou comparar ou medir algo sob condições controladas, como desempenho de tecnologias ou algoritmos? & Medições e teste de hipóteses & \ref{sec_tipo_experimental} \\ \hline
+		\textit{Survey} & Quero conhecer a opinião, o perfil ou o comportamento de um grupo de pessoas? & Análise das respostas de um questionário & \ref{sec_tipo_survey} \\ \hline
+		Estudo de caso & Vou investigar em profundidade uma organização ou situação real? & Diagnóstico ou proposta para o caso & \ref{sec_tipo_estudo_caso} \\ \hline
+		Revisão sistemática & Quero mapear e sintetizar o que já foi publicado sobre um tema? & Síntese da literatura e lacunas & \ref{sec_tipo_revisao} \\ \hline
+		Outros tipos & O trabalho é um artefato com avaliação rigorosa, uma intervenção, uma análise de processos ou de dados? & Varia conforme o tipo & \ref{sec_tipo_outros} \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
+
+É comum que um trabalho combine tipos. Um sistema pode ser avaliado com questionário aplicado aos usuários, e um estudo de caso pode resultar no desenvolvimento de uma solução. Nesses casos, o tipo principal é aquele que corresponde à principal contribuição do trabalho e define a estrutura dos capítulos; os demais aparecem como procedimentos na metodologia. Na dúvida, defina o tipo com o orientador antes de escrever o projeto.
+
+\section{Organização do trabalho}
+
+O restante deste documento está organizado da seguinte forma: o Capítulo~\ref{cap2_fundamentacao} apresenta o TCC em Sistemas de Informação, a classificação da pesquisa científica e os tipos de trabalho mais comuns, cada um com sua estrutura típica e um exemplo; o Capítulo~\ref{cap3_metodologia} descreve como redigir a metodologia; o Capítulo~\ref{cap4_resultados} trata da apresentação e da discussão dos resultados; e o Capítulo~\ref{cap5_consideracoes} orienta a redação das considerações finais. O Apêndice~\ref{apA_guia} reúne um guia de uso do modelo \LaTeX{}, e os demais apêndices e anexos trazem modelos de documentos frequentes.

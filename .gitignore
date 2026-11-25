@@ -11,6 +11,7 @@
 *.loa
 *.lof
 *.log
+*.loc
 *.loq
 *.lot
 *.out
