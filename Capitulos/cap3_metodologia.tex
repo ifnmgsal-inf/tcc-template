@@ -1,7 +1,61 @@
 \chapter{Metodologia}
 \label{cap3_metodologia}
 
-% Substitua este texto pela metodologia do seu trabalho.
-Descreva o tipo de pesquisa (por exemplo, aplicada, exploratória, descritiva), a abordagem (qualitativa, quantitativa ou mista) e os procedimentos técnicos adotados (pesquisa bibliográfica, estudo de caso, experimento, desenvolvimento de software, entre outros).
+% ---------------------------------------------------------------
+% ORIENTAÇÃO: descreva o caminho percorrido com detalhes suficientes
+% para que outra pessoa possa reproduzir o trabalho. Use as seções
+% abaixo como base e acrescente as específicas do seu tipo de
+% trabalho, indicadas na "Estrutura típica" de cada tipo no
+% Capítulo 2. Redija no passado na monografia final (no projeto,
+% use o futuro).
+% ---------------------------------------------------------------
 
-Apresente as etapas executadas, os materiais, as ferramentas, as tecnologias e os dados utilizados, bem como os critérios e as métricas de avaliação, com detalhes suficientes para que outro pesquisador possa reproduzir o trabalho.
+Este capítulo descreve os procedimentos metodológicos adotados no trabalho.
+
+\section{Classificação da pesquisa}
+\label{sec_met_classificacao}
+
+Classifique a pesquisa quanto à natureza, à abordagem, aos objetivos e aos procedimentos técnicos, conforme apresentado na Seção~\ref{sec_classificacao}, justificando cada escolha. Exemplo: \enquote{Esta pesquisa é de natureza aplicada, com abordagem mista e objetivo exploratório. Quanto aos procedimentos, trata-se de um estudo de caso realizado em uma empresa do setor varejista de Salinas, MG}.
+
+\section{Etapas da pesquisa}
+\label{sec_met_etapas}
+
+Apresente as etapas do trabalho em ordem, preferencialmente com um fluxograma, como o da Figura~\ref{fig_etapas}, e descreva cada etapa em um parágrafo.
+
+\begin{figure}[htb]
+	\centering
+	\caption{Etapas da pesquisa (exemplo).}
+	\label{fig_etapas}
+	\begin{tikzpicture}[
+		etapa/.style={draw, rounded corners, align=center, font=\small, text width=2.3cm, minimum height=1.2cm},
+		fluxo/.style={-{Stealth}},
+		node distance=0.5cm
+	]
+		\node[etapa] (e1) {Revisão da literatura};
+		\node[etapa, right=of e1] (e2) {Definição do método};
+		\node[etapa, right=of e2] (e3) {Coleta ou desenvolvimento};
+		\node[etapa, right=of e3] (e4) {Análise e avaliação};
+		\draw[fluxo] (e1) -- (e2);
+		\draw[fluxo] (e2) -- (e3);
+		\draw[fluxo] (e3) -- (e4);
+	\end{tikzpicture}
+	\fonte{Elaborado pelo autor.}
+\end{figure}
+
+\section{Coleta e análise dos dados}
+\label{sec_met_coleta}
+
+Descreva de onde vêm os dados e como foram analisados. Conforme o tipo de trabalho, esta seção pode dar lugar a seções específicas:
+
+\begin{alineas}
+	\item desenvolvimento de software: processo de desenvolvimento, ferramentas e forma de avaliação do sistema (Seção~\ref{sec_tipo_desenvolvimento});
+	\item pesquisa experimental: hipóteses, variáveis, métricas, protocolo e análise estatística (Seção~\ref{sec_tipo_experimental});
+	\item \textit{survey}: população, amostra, instrumento, validação e análise (Seção~\ref{sec_tipo_survey});
+	\item estudo de caso: unidade de análise, fontes de evidência e análise (Seção~\ref{sec_tipo_estudo_caso});
+	\item revisão sistemática: protocolo da revisão (Seção~\ref{sec_tipo_revisao}).
+\end{alineas}
+
+\section{Aspectos éticos}
+\label{sec_met_etica}
+
+Se a pesquisa envolver seres humanos, como questionários, entrevistas ou testes com usuários, descreva como o consentimento foi obtido (TCLE, Apêndice~\ref{apC_questionario}), se houve submissão ao CEP e como os dados pessoais foram protegidos, conforme a LGPD. Se a pesquisa não envolver seres humanos, esta seção pode ser omitida.
