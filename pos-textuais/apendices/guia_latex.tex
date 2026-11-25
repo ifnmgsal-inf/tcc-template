@@ -1,0 +1,104 @@
+%-----------------------------------
+\chapter{Guia de uso do modelo LaTeX}
+\label{apA_guia}
+
+% Remova este apêndice da versão final do seu TCC.
+
+Este apêndice resume como usar os principais recursos do modelo. A estrutura de arquivos e as instruções de compilação estão no arquivo \texttt{README.md} do projeto.
+
+\section{Citações (ABNT NBR 10520:2023)}
+
+A norma define as seguintes modalidades de citação:
+
+\begin{alineas}
+	\item citação direta: transcrição textual de parte da obra consultada;
+	\item citação indireta: texto baseado na obra consultada;
+	\item citação de citação: citação de um texto ao qual não se teve acesso ao original.
+\end{alineas}
+
+O comando \verb|\citeonline{chave}| gera a citação com o autor no corpo da frase, e \verb|\cite{chave}|, a citação entre parênteses:
+
+\begin{enumerate}
+	\item O aprendizado profundo é, segundo \citeonline{Lecun2015DeepLearning}, um subcampo do aprendizado de máquina que aprende representações em múltiplos níveis de abstração.
+	\item A diversidade entre modelos pode ser obtida com conjuntos de treinamento ou hiperparâmetros diferentes \cite{Polikar2012EnsembleLearning}.
+\end{enumerate}
+
+Nas citações diretas, a página é obrigatória: \verb|\cite[p.~436]{chave}|. Citações diretas de até três linhas ficam entre aspas duplas, geradas com \verb|\enquote{...}|. Exemplo ilustrativo: segundo \citeonline[p.~436]{Lecun2015DeepLearning}, o aprendizado profundo \enquote{permite que modelos computacionais compostos de múltiplas camadas aprendam representações de dados}.
+
+Citações diretas com mais de três linhas usam o ambiente \texttt{citacao}, com recuo de 4~cm, letra menor e sem aspas:
+
+\begin{citacao}
+For example, if the probability of an event is not known with precision, then it may be characterized linguistically as, say, quite likely, not very unlikely, highly unlikely, etc., where quite likely, not very unlikely and highly unlikely are interpreted as labels of fuzzy subsets of the unit interval \cite[p.~202]{zadeh1976fuzzy}.
+\end{citacao}
+
+A versão de 2023 da norma usa letras maiúsculas e minúsculas no nome do autor também entre parênteses; o pacote \texttt{abntex2cite} ainda gera caixa alta (padrão de 2002). Confirme com o orientador qual versão o curso adota.
+
+As referências ficam no arquivo \texttt{referencias.bib}, e apenas as obras citadas aparecem na lista de referências. Páginas web devem ter os campos \texttt{url} e \texttt{urlaccessdate}, como a referência ao pacote abnTeX2 \cite{abntex2ctan}.
+
+\section{Notas de rodapé e links}
+
+Notas de rodapé são criadas com \verb|\footnote{...}|, sem espaço antes do comando e após a pontuação.\footnote{Exemplo de nota de rodapé.} Endereços são inseridos com \verb|\url{...}|, como \url{https://ctan.org/pkg/abntex2}, e links com texto, com \verb|\href{endereço}{texto}|, como a página do \href{https://ctan.org/pkg/abntex2}{abnTeX2}.
+
+\section{Ilustrações e tabelas}
+
+Toda ilustração (figura, quadro, gráfico) e toda tabela deve ter título acima, fonte abaixo (comando \verb|\fonte{...}|) e ser citada no texto antes de aparecer. Use rótulos com prefixos sugestivos (\texttt{fig\_}, \texttt{qua\_}, \texttt{tab\_}, \texttt{eq\_}) e referencie com til para evitar quebra de linha, como em \verb|Figura~\ref{fig_classes}|. Os exemplos deste modelo estão no Capítulo~\ref{cap2_fundamentacao}:
+
+\begin{alineas}
+	\item figuras desenhadas em TikZ: Figuras~\ref{fig_classes}, \ref{fig_likert} e \ref{fig_prisma};
+	\item subfiguras: Figura~\ref{fig_processos};
+	\item quadros, que apresentam informações textuais e têm bordas fechadas: Quadros~\ref{qua_classificacao} e \ref{qua_comparativo};
+	\item tabelas, que apresentam dados numéricos e não têm bordas laterais: Tabelas~\ref{tab_requisitos} e \ref{tab_resultados_experimento};
+	\item equações: Equações~\eqref{eq_media} e \eqref{eq_desvio};
+	\item algoritmos: Algoritmo~\ref{alg_medicao};
+	\item códigos-fonte, com o ambiente \texttt{lstlisting} dentro do ambiente \texttt{codigo}: Código~\ref{cod_agendamento};
+	\item tabela longa, que continua em várias páginas: Tabela~\ref{tab_requisitos_completos}.
+\end{alineas}
+
+Imagens externas (PNG, JPG ou PDF) devem ser colocadas na pasta \texttt{Figuras/} e inseridas conforme o Quadro~\ref{qua_codigo_figura}. Não use imagens protegidas por direitos autorais sem autorização.
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Código para inserir uma figura a partir de arquivo.}
+	\label{qua_codigo_figura}
+\begin{Verbatim}[fontsize=\small,frame=single]
+\begin{figure}[htb]
+    \centering
+    \caption{Título da figura.}
+    \label{fig_exemplo}
+    \includegraphics[width=0.6\textwidth]{Figuras/exemplo.png}
+    \fonte{Elaborado pelo autor.}
+\end{figure}
+\end{Verbatim}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
+
+\section{Versão para impressão}
+
+Os links do PDF são coloridos para leitura em tela. Para gerar a versão impressa com links em preto, troque, no arquivo \texttt{main.tex}, a linha \verb|\impressaofalse| pela linha \verb|\impressaotrue|.
+
+\section{Lista de verificação antes da entrega}
+
+Antes de entregar o trabalho ao orientador ou à banca, confira os itens do Quadro~\ref{qua_checklist}.
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Lista de verificação antes da entrega.}
+	\label{qua_checklist}
+	\small
+	\begin{tabularx}{\textwidth}{|c|X|}
+		\hline
+		\textbf{OK} & \textbf{Item} \\ \hline
+		( \quad ) & Dados do trabalho preenchidos no \texttt{main.tex} (título, autor, orientador, ano). \\ \hline
+		( \quad ) & Resumo com 150 a 500 palavras, em parágrafo único, seguido das palavras-chave separadas por ponto e vírgula; \textit{abstract} correspondente. \\ \hline
+		( \quad ) & Todos os objetivos específicos retomados nas considerações finais. \\ \hline
+		( \quad ) & Toda ilustração e tabela citada no texto antes de aparecer, com título acima e fonte abaixo. \\ \hline
+		( \quad ) & Toda citação com entrada nas referências, e toda referência citada no texto; citações diretas com página. \\ \hline
+		( \quad ) & Referências conferidas: autor, título, edição, local, editora, ano e, para páginas web, endereço e data de acesso. \\ \hline
+		( \quad ) & Siglas e símbolos usados no texto presentes nas listas, e listas sem itens não usados. \\ \hline
+		( \quad ) & Seções e apêndices de exemplo deste modelo removidos, incluindo as Seções~\ref{sec_como_usar} e \ref{sec_escolha_tipo} e este apêndice. \\ \hline
+		( \quad ) & Listas vazias (de códigos, quadros, símbolos) removidas do \texttt{main.tex}. \\ \hline
+		( \quad ) & Compilação sem erros e sem \enquote{??} no PDF (citações ou referências indefinidas). \\ \hline
+		( \quad ) & Ficha catalográfica solicitada à biblioteca, para a versão final. \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}

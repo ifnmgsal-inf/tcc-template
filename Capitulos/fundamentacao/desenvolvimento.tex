@@ -1,0 +1,86 @@
+%-----------------------------------
+\section{Desenvolvimento de software}
+\label{sec_tipo_desenvolvimento}
+
+\subsection{Caracterização}
+
+No TCC de desenvolvimento de software, o produto central é um sistema construído para resolver um problema real ou plausível. O trabalho não se limita à implementação: é preciso justificar a necessidade do sistema, documentar requisitos e decisões de projeto e, sobretudo, \emph{avaliar} a solução \cite{sommerville2018engenharia,pressman2016engenharia}. A avaliação pode envolver testes funcionais, medição de desempenho ou testes com usuários, como a aplicação da escala SUS (\textit{System Usability Scale}) \cite{brooke1996sus}.
+
+\subsection{Estrutura típica do trabalho}
+
+O Quadro~\ref{qua_estrutura_desenvolvimento} apresenta as seções que esse tipo de trabalho costuma ter além dos elementos comuns.
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Estrutura típica de um TCC de desenvolvimento de software.}
+	\label{qua_estrutura_desenvolvimento}
+	\small
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Capítulo} & \textbf{Seções típicas} \\ \hline
+		Metodologia & Processo de desenvolvimento (por exemplo, Scrum ou iterativo); ferramentas e tecnologias; forma de avaliação do sistema. \\ \hline
+		Desenvolvimento do sistema & Requisitos funcionais e não funcionais; modelagem (casos de uso, classes, dados); arquitetura; aspectos relevantes da implementação. \\ \hline
+		Resultados e discussão & Apresentação do sistema (telas e funcionalidades); resultados da avaliação; discussão. \\ \hline
+		Apêndices & Documento de requisitos completo; questionário de avaliação; manual do usuário. \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
+
+\subsection{Exemplo: requisitos e modelagem}
+
+Os requisitos costumam ser apresentados em tabela ou quadro, com identificador, descrição e prioridade, como na Tabela~\ref{tab_requisitos}. A lista completa deve ficar em apêndice (Apêndice~\ref{apB_requisitos}).
+
+\begin{table}[htb]
+	\centering
+	\caption{Requisitos funcionais de um sistema de agendamento (exemplo).}
+	\label{tab_requisitos}
+	\small
+	\begin{tabularx}{\textwidth}{lXl}
+		\toprule
+		ID & Descrição & Prioridade \\
+		\midrule
+		RF01 & O sistema deve permitir o cadastro de clientes. & Alta \\
+		RF02 & O sistema deve permitir agendar, remarcar e cancelar atendimentos. & Alta \\
+		RF03 & O sistema deve enviar lembrete ao cliente um dia antes do atendimento. & Média \\
+		RF04 & O sistema deve emitir relatório mensal de atendimentos. & Baixa \\
+		\bottomrule
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{table}
+
+A modelagem é apresentada por meio de diagramas, como o diagrama de classes da Figura~\ref{fig_classes}. Diagramas podem ser produzidos em ferramentas externas e inseridos como imagem, ou desenhados diretamente com o pacote TikZ, como neste exemplo.
+
+\begin{figure}[htb]
+	\centering
+	\caption{Diagrama de classes simplificado do sistema de agendamento.}
+	\label{fig_classes}
+	\begin{tikzpicture}[
+		classe/.style={draw, rectangle split, rectangle split parts=2, align=left, font=\small, minimum width=3.6cm},
+		node distance=2.2cm
+	]
+		\node[classe] (cliente) {\textbf{Cliente}\nodepart{second}nome: String\\telefone: String};
+		\node[classe, right=of cliente] (agendamento) {\textbf{Agendamento}\nodepart{second}dataHora: DateTime\\status: Status};
+		\node[classe, right=of agendamento] (servico) {\textbf{Serviço}\nodepart{second}descricao: String\\duracao: int};
+		\draw (cliente.east |- agendamento.text) -- node[above, font=\scriptsize]{1 \hspace{1.2cm} 0..*} (agendamento.west |- agendamento.text);
+		\draw (agendamento.east |- agendamento.text) -- node[above, font=\scriptsize]{0..* \hspace{1.2cm} 1} (servico.west |- agendamento.text);
+	\end{tikzpicture}
+	\fonte{Elaborado pelo autor.}
+\end{figure}
+
+Trechos de código-fonte só devem aparecer no texto quando ilustram uma decisão importante da implementação, como no Código~\ref{cod_agendamento}. Códigos extensos devem ficar em apêndice ou em repositório público, indicado no texto.
+
+\begin{codigo}[htb]
+	\caption{Verificação de conflito de horários no agendamento (exemplo).}
+	\label{cod_agendamento}
+\begin{lstlisting}[language=Python]
+def horario_disponivel(agendamentos, inicio, duracao):
+    """Retorna True se o horário estiver livre."""
+    fim = inicio + duracao
+    for ag in agendamentos:
+        # Conflito: os intervalos se sobrepõem
+        if inicio < ag.fim and fim > ag.inicio:
+            return False
+    return True
+\end{lstlisting}
+	\fonte{Elaborado pelo autor.}
+\end{codigo}

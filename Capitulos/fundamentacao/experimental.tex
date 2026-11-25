@@ -1,0 +1,75 @@
+%-----------------------------------
+\section{Pesquisa experimental}
+\label{sec_tipo_experimental}
+
+\subsection{Caracterização}
+
+A pesquisa experimental manipula deliberadamente uma ou mais variáveis (variáveis independentes ou fatores) e mede o efeito sobre outras (variáveis dependentes), mantendo as demais condições sob controle \cite{wohlin2012experimentation}. Em Sistemas de Informação, são exemplos a comparação de desempenho entre bancos de dados ou \textit{frameworks}, a avaliação de algoritmos de aprendizado de máquina \cite{Lecun2015DeepLearning} e experimentos controlados com usuários.
+
+O ponto central é a \emph{reprodutibilidade}: outro pesquisador deve ser capaz de repetir o experimento a partir da descrição apresentada. Por isso, ambiente, dados, parâmetros e número de repetições devem ser informados.
+
+\subsection{Estrutura típica do trabalho}
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Estrutura típica de um TCC de pesquisa experimental.}
+	\label{qua_estrutura_experimental}
+	\small
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Capítulo} & \textbf{Seções típicas} \\ \hline
+		Metodologia & Questões de pesquisa e hipóteses; objetos de estudo ou conjuntos de dados; variáveis e métricas; protocolo experimental (ambiente, repetições); análise estatística. \\ \hline
+		Resultados e discussão & Resultados por questão de pesquisa; teste das hipóteses; discussão; ameaças à validade. \\ \hline
+		Apêndices & Configuração do ambiente; \textit{scripts} e código-fonte (ou link para repositório); dados brutos. \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
+
+O Quadro~\ref{qua_estrutura_experimental} resume a estrutura desse tipo de trabalho. As hipóteses costumam ser formuladas em pares, com uma hipótese nula ($H_0$) e uma alternativa ($H_1$).
+
+\subsection{Exemplo: comparação de desempenho}
+
+Considere um experimento que compara o tempo de resposta de dois bancos de dados. Para cada um, a consulta é executada $n$ vezes e calcula-se a média amostral pela Equação~\eqref{eq_media} e o desvio padrão amostral pela Equação~\eqref{eq_desvio}.
+
+\begin{equation}
+	\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+	\label{eq_media}
+\end{equation}
+
+\begin{equation}
+	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} \left( x_i - \bar{x} \right)^2}
+	\label{eq_desvio}
+\end{equation}
+
+O procedimento de medição pode ser descrito em pseudocódigo, como no Algoritmo~\ref{alg_medicao}, e os resultados, apresentados em tabela, como a Tabela~\ref{tab_resultados_experimento}.
+
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\KwIn{banco de dados $B$, consulta $q$, número de repetições $n$}
+	\KwOut{lista de tempos $T$}
+	$T \leftarrow \emptyset$\;
+	executar $q$ em $B$ uma vez para aquecimento do \textit{cache}\;
+	\For{$i \leftarrow 1$ \KwTo $n$}{
+		$t_0 \leftarrow$ tempo atual\;
+		executar $q$ em $B$\;
+		adicionar (tempo atual $- t_0$) a $T$\;
+	}
+	\Return{$T$}\;
+	\caption{Medição do tempo de resposta}
+	\label{alg_medicao}
+\end{algorithm}
+
+\begin{table}[htb]
+	\centering
+	\caption{Tempo de resposta por banco de dados, em milissegundos (dados fictícios).}
+	\label{tab_resultados_experimento}
+	\begin{tabular}{lrrrr}
+		\toprule
+		Banco de dados & $n$ & $\bar{x}$ & $s$ & Mediana \\
+		\midrule
+		Banco A & 30 & 12,40 & 1,85 & 12,10 \\
+		Banco B & 30 & 18,75 & 3,20 & 18,05 \\
+		\bottomrule
+	\end{tabular}
+	\fonte{Elaborado pelo autor.}
+\end{table}

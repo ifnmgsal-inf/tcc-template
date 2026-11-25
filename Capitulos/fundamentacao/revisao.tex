@@ -1,0 +1,78 @@
+%-----------------------------------
+\section{Revisão sistemática da literatura}
+\label{sec_tipo_revisao}
+
+\subsection{Caracterização}
+
+A revisão sistemática da literatura identifica, avalia e sintetiza os estudos disponíveis sobre uma questão de pesquisa, seguindo um protocolo explícito e reprodutível \cite{kitchenham2007guidelines}. Ela se diferencia da revisão narrativa, presente em todo TCC, por definir previamente as bases consultadas, a \textit{string} de busca e os critérios de inclusão e exclusão. O mapeamento sistemático é uma variação que busca classificar e quantificar a produção sobre um tema mais amplo, em vez de responder a uma questão específica.
+
+O processo de seleção dos estudos deve ser relatado de forma transparente; o PRISMA 2020 é a diretriz mais usada para isso \cite{page2021prisma}.
+
+\subsection{Estrutura típica do trabalho}
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Estrutura típica de um TCC de revisão sistemática.}
+	\label{qua_estrutura_revisao}
+	\small
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Capítulo} & \textbf{Seções típicas} \\ \hline
+		Metodologia (protocolo) & Questões de pesquisa; bases de dados e \textit{string} de busca; critérios de inclusão e exclusão; seleção dos estudos; extração e síntese dos dados. \\ \hline
+		Resultados e discussão & Visão geral dos estudos (ano, local de publicação); respostas por questão de pesquisa; lacunas identificadas; ameaças à validade. \\ \hline
+		Apêndices & Lista completa dos estudos selecionados; formulário de extração. \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
+
+O Quadro~\ref{qua_estrutura_revisao} resume a estrutura desse tipo de trabalho.
+
+\subsection{Exemplo: seleção dos estudos}
+
+A Figura~\ref{fig_prisma} apresenta um fluxograma de seleção no formato PRISMA, e o Quadro~\ref{qua_estudos} mostra como os estudos incluídos podem ser sintetizados.
+
+\begin{figure}[htb]
+	\centering
+	\caption{Fluxograma de seleção dos estudos (dados fictícios).}
+	\label{fig_prisma}
+	\begin{tikzpicture}[
+		etapa/.style={draw, align=center, font=\small, text width=5.5cm, minimum height=1cm},
+		exclusao/.style={draw, align=center, font=\small, text width=4.2cm, minimum height=1cm},
+		fase/.style={font=\small\bfseries, rotate=90, anchor=center},
+		fluxo/.style={-{Stealth}},
+		node distance=0.7cm and 0.9cm
+	]
+		\node[etapa] (busca) {Estudos identificados nas bases\\($n = 412$)};
+		\node[etapa, below=of busca] (triagem) {Estudos triados por título e resumo\\($n = 356$)};
+		\node[etapa, below=of triagem] (completo) {Estudos avaliados pelo texto completo\\($n = 48$)};
+		\node[etapa, below=of completo] (incluidos) {Estudos incluídos\\($n = 21$)};
+		\node[exclusao, right=of busca] (dup) {Duplicados removidos\\($n = 56$)};
+		\node[exclusao, right=of triagem] (exc1) {Excluídos na triagem\\($n = 308$)};
+		\node[exclusao, right=of completo] (exc2) {Excluídos pelos critérios\\de exclusão ($n = 27$)};
+		\draw[fluxo] (busca) -- (triagem);
+		\draw[fluxo] (triagem) -- (completo);
+		\draw[fluxo] (completo) -- (incluidos);
+		\draw[fluxo] (busca) -- (dup);
+		\draw[fluxo] (triagem) -- (exc1);
+		\draw[fluxo] (completo) -- (exc2);
+		\node[fase] at ($(busca.west) + (-0.5,0)$) {Identificação};
+		\node[fase] at ($(triagem.west)!0.5!(completo.west) + (-0.5,0)$) {Triagem};
+		\node[fase] at ($(incluidos.west) + (-0.5,0)$) {Inclusão};
+	\end{tikzpicture}
+	\fonte{Elaborado pelo autor, com base em \citeonline{page2021prisma}.}
+\end{figure}
+
+\begin{quadro}[htb]
+	\centering
+	\caption{Síntese dos estudos incluídos (exemplo).}
+	\label{qua_estudos}
+	\small
+	\begin{tabularx}{\textwidth}{|l|l|X|X|}
+		\hline
+		\textbf{ID} & \textbf{Ano} & \textbf{Contexto} & \textbf{Principal achado} \\ \hline
+		E01 & 2021 & Pequenas empresas & Custo é a principal barreira à adoção. \\ \hline
+		E02 & 2022 & Setor público & Capacitação influencia a aceitação. \\ \hline
+		E03 & 2023 & Instituições de ensino & Integração com sistemas legados é crítica. \\ \hline
+	\end{tabularx}
+	\fonte{Elaborado pelo autor.}
+\end{quadro}
